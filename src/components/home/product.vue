@@ -3,37 +3,39 @@
         <div class="container product-container">
             <div class="inner-container product-inner-container" v-if="products && products.length !== 0">
 				<h1 class="headline">Products Management</h1>
-                <div v-for="item in products.data"
+				<table class="table table-dark">
+                <tbody v-for="item in products.data"
                      :key="item.product_id"
                      class="items product-items"
                 >	
-					<ul class="list product-list">
-						<li>
-							{{  item.product_id  }} - {{  item.product_name  }}  - {{  item.category  }}  - {{  item.price  }}  - {{  item.amount  }}  -  {{  item.image_url  }}
+							<td>{{  item.product_id  }}</td>  <td>{{  item.product_name  }}</td>   <td>{{  item.category  }}</td>   <td>{{  item.price  }}</td>   <td>{{  item.amount  }}</td>    <td>{{  item.image_url  }}</td>
 
-							<button @click='prod_del(item.product_id)'> Delete this product </button>
-						</li>
-					</ul>
-                </div>
+							<button class="btn btn-secondary" @click='prod_del(item.product_id)'> Delete this product </button>
+                </tbody>
+				<div display:inline>
+				<button class="btn btn-secondary" @click='pro_get(pro_idx-10)'> prev_page </button>
+				<button class="btn btn-secondary" @click='pro_get(pro_idx+10)'> next_page </button>
+				</div>
+				</table>
 				<ul>
 					<form class="form modify-form product-form" v-on:submit.prevent="prod_modify">
 						<li>"modify information if you want"</li>
-						<input type="text" name="product_id" id="change_product_id" required v-model="prod_form2.product_id">
-						<input type="text" name="product_name" id="change_product_name" v-model="prod_form2.product_name">
-						<input type="text" name="category" id="change_category" v-model="prod_form2.category">
-						<input type="text" name="price" id="change_price" v-model="prod_form2.price">
-						<input type="text" name="amount" id="change_amount" v-model="prod_form2.amount">
-						<input type="text" name="image_url" id="change_image_url" v-model="prod_form2.image_url">
-						<p><input type="submit" value="Submit"></p>
+						<input   class="form-control"   type="text"  name="product_id" id="change_product_id" required v-model="prod_form2.product_id">
+						<input   class="form-control"   type="text"  name="product_name" id="change_product_name" v-model="prod_form2.product_name">
+						<input   class="form-control"   type="text"  name="category" id="change_category" v-model="prod_form2.category">
+						<input   class="form-control"   type="text"  name="price" id="change_price" v-model="prod_form2.price">
+						<input   class="form-control"   type="text"  name="amount" id="change_amount" v-model="prod_form2.amount">
+						<input   class="form-control"   type="text"  name="image_url" id="change_image_url" v-model="prod_form2.image_url">
+						<p><input class= "btn btn-primary" type="submit" value="Submit"></p>
 					</form>
 					<form class="form add-form product-form" v-on:submit.prevent="prod_add">
 						<li>"add new product if you want"</li>
-						<input type="text" name="product_name" id="change_product_name" v-model="prod_form.product_name">
-						<input type="text" name="category" id="change_category" v-model="prod_form.category">
-						<input type="text" name="price" id="change_price" v-model="prod_form.price">
-						<input type="text" name="amount" id="change_amount" v-model="prod_form.amount">
-						<input type="text" name="image_url" id="change_image_url" v-model="prod_form.image_url">
-						<p><input type="submit" value="Submit"></p>
+						<input   class="form-control"   type="text"  name="product_name" id="change_product_name" v-model="prod_form.product_name">
+						<input   class="form-control"   type="text"  name="category" id="change_category" v-model="prod_form.category">
+						<input   class="form-control"   type="text"  name="price" id="change_price" v-model="prod_form.price">
+						<input   class="form-control"   type="text"  name="amount" id="change_amount" v-model="prod_form.amount">
+						<input   class="form-control"   type="text"  name="image_url" id="change_image_url" v-model="prod_form.image_url">
+						<p><input class= "btn btn-primary" type="submit" value="Submit"></p>
 					</form>
 				</ul>
             </div> 
@@ -47,6 +49,7 @@ export default {
     data() {
         return {
             products: [],
+			pro_idx: 0,
 			prod_form:{ // for adding purpose
 				
 				product_name:"",
@@ -92,6 +95,11 @@ export default {
 			let response= await HomeApi.deleteProd(id)
 			window.location.reload()
 		},
+		pro_get:async function(idx){
+			let res2 = await HomeApi.getProds(idx)
+			this.pro_idx=idx
+			this.products = res2.data
+		},
 	},
     async created () {
 		let res = await HomeApi.getAllProds()
@@ -105,6 +113,9 @@ export default {
 
 </script>
 <style type="text/css">
+.form-control {
+	background-color: #6c757d;
+}
 
 
 </style>

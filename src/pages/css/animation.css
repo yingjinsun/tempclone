@@ -1,0 +1,82 @@
+/*点击导航栏移动视角*/
+#st-control-1:checked ~ .st-scroll {
+    -webkit-transform: translateY(0%);
+}
+
+#st-control-2:checked ~ .st-scroll {
+    -webkit-transform: translateY(-100%);
+}
+
+#st-control-3:checked ~ .st-scroll {
+    -webkit-transform: translateY(-200%);
+}
+
+#st-control-4:checked ~ .st-scroll {
+    -webkit-transform: translateY(-300%);
+}
+
+/*标题下滑*/
+#st-control-1:checked ~ .st-scroll #st-panel-1 h2,
+#st-control-2:checked ~ .st-scroll #st-panel-2 h2,
+#st-control-3:checked ~ .st-scroll #st-panel-3 h2,
+#st-control-4:checked ~ .st-scroll #st-panel-4 h2 {
+    -webkit-animation: moveDown 0.5s ease-in-out 0.2s backwards;
+}
+@-webkit-keyframes moveDown {
+    0% {
+        -webkit-transform: translateY(-100px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+/*简介文字上滑*/
+#st-control-1:checked ~ .st-scroll #st-panel-1 p,
+#st-control-2:checked ~ .st-scroll #st-panel-2 .culture-article{
+    -webkit-animation: moveUp 0.6s ease-in-out 0.2s backwards;
+}
+@-webkit-keyframes moveUp {
+    0% {
+        -webkit-transform: translateY(100px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+/*历史信息左滑*/
+#st-control-3:checked ~ .st-scroll #st-panel-3 #event1 .right,
+#st-control-3:checked ~ .st-scroll #st-panel-3 #event3 .right {
+    -webkit-animation: moveLeft 0.6s ease-in-out 0.2s backwards;
+}
+@-webkit-keyframes moveLeft {
+    0% {
+        -webkit-transform: translateX(200px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateX(0px);
+        opacity: 1;
+    }
+}
+
+/*历史信息右滑*/
+#st-control-3:checked ~ .st-scroll #st-panel-3 #event2 .left,
+#st-control-3:checked ~ .st-scroll #st-panel-3 #event4 .left {
+    -webkit-animation: moveRight 0.6s ease-in-out 0.2s backwards;
+}
+@-webkit-keyframes moveRight {
+    0% {
+        -webkit-transform: translateX(-200px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateX(0px);
+        opacity: 1;
+    }
+}

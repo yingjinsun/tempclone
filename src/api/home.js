@@ -14,6 +14,10 @@ export default {
     getAllUsers () {
         return http.get('/infos/users')
     },
+    getUsers (idx) {
+		if (idx<0) idx=0
+        return http.post(`/infos/users?offset=${idx}`)
+    },
 	postNewUser(form){
 		return http.post('/infos/users', form)
 	},
@@ -27,6 +31,10 @@ export default {
 	},
     getAllAddrs () {
         return http.get('/infos/addresses')
+    },
+    getAddrs (idx) {
+		if (idx<0) idx=0
+        return http.post(`/infos/addresses?offset=${idx}`)
     },
 	postNewAddr(form){
 		return http.post('/infos/addresses', form)
@@ -45,7 +53,10 @@ export default {
 	postNewProd(form){
 		return http2.post('/infos/products', form)
 	},
-
+    getProds (idx) {
+		if (idx<0) idx=0
+        return http2.post(`/infos/products?offset=${idx}`)
+    },
 	putUpdateProd(id, form){
 		print(id)
 		return http2.put(`/infos/products/${id}`, form )
@@ -55,6 +66,10 @@ export default {
 	},
     getAllOrds () {
         return http3.get('/infos/orders')
+    },
+    getOrds (idx) {
+		if (idx<0) idx=0
+        return http3.post(`/infos/orders?offset=${idx}`)
     },
 	postNewOrd(form){
 		return http3.post('/infos/orders', form)

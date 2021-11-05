@@ -3,35 +3,39 @@
         <div class="container user-container">
             <div class="inner-container user-inner-container" v-if="users && users.length !== 0">
 				<h1 class="headline">Users Management</h1>
-                <div v-for="item in users.data"
+				<table class="table table-dark">
+                <tbody v-for="item in users.data"
                      :key="item.userID"
                      class="items user-items"
                 >	
-					<ul class="list user-list">
-						<li>
-							{{  item.userID  }} - {{  item.nameLast  }}  - {{  item.nameFirst  }}  - {{  item.email  }}  - {{  item.userAddress  }}
 
-							<button @click='user_del(item.userID)'> Delete this user </button>
-						</li>
-					</ul>
-                </div>
+							<td>{{  item.userID  }}</td>  <td>{{  item.nameLast  }}</td>   <td>{{  item.nameFirst  }}</td>   <td>{{  item.email  }}</td>   <td>{{  item.userAddress  }}</td>
+
+							<button class="btn btn-secondary" @click='user_del(item.userID)'> Delete this user </button>
+
+                </tbody>
+				<div display:inline>
+				<button class="btn btn-secondary" @click='usr_get(usr_idx-10)'> prev_page </button>
+				<button class="btn btn-secondary" @click='usr_get(usr_idx+10)'> next_page </button>
+				</div>
+				</table>
 				<ul>
 					<form class="form modify-form user-form" v-on:submit.prevent="user_modify">
 						<li>"modify information if you want"</li>
-						<input type="text" name="UserID" id="change_userID" required v-model="user_form2.user_id">
-						<input type="text" name="nameLast" id="change_nameLast" v-model="user_form2.name_last">
-						<input type="text" name="nameFirst" id="change_nameFirst" v-model="user_form2.name_first">
-						<input type="text" name="email" id="change_email" v-model="user_form2.email">
-						<input type="text" name="userAddress" id="change_userAddress" v-model="user_form2.user_address">
-						<p><input type="submit" value="Submit"></p>
+						<input   class="form-control"   type="text" name="UserID" id="change_userID" required v-model="user_form2.user_id">
+						<input   class="form-control"   type="text" name="nameLast" id="change_nameLast" v-model="user_form2.name_last">
+						<input   class="form-control"   type="text" name="nameFirst" id="change_nameFirst" v-model="user_form2.name_first">
+						<input   class="form-control"   type="text" name="email" id="change_email" v-model="user_form2.email">
+						<input   class="form-control"   type="text" name="userAddress" id="change_userAddress" v-model="user_form2.user_address">
+						<p><input class= "btn btn-primary" type="submit" value="Submit"></p>
 					</form>
 					<form class="form add-form user-form" v-on:submit.prevent="user_add">
 						<li>"add new user if you want"</li>
-						<li> <input type="text" name="nameLast" id="nameLast" v-model="user_form.name_last"> </li>
-						<li> <input type="text" name="nameFirst" id="nameFirst" v-model="user_form.name_first"> </li>
-						<li> <input type="text" name="email" id="email" v-model="user_form.email"> </li>
-						<li> <input type="text" name="userAddress" id="userAddress" v-model="user_form.user_address"> </li>
-						<p><input type="submit" value="Submit"></p>
+						<li> <input   class="form-control"   type="text" name="nameLast" id="nameLast" v-model="user_form.name_last"> </li>
+						<li> <input   class="form-control"   type="text" name="nameFirst" id="nameFirst" v-model="user_form.name_first"> </li>
+						<li> <input   class="form-control"   type="text" name="email" id="email" v-model="user_form.email"> </li>
+						<li> <input   class="form-control"   type="text" name="userAddress" id="userAddress" v-model="user_form.user_address"> </li>
+						<p><input class= "btn btn-primary" type="submit" value="Submit"></p>
 					</form>
 				</ul>
             </div> 
@@ -41,43 +45,45 @@
         <div class="container addr-container">
             <div class="inner-container addr-inner-container" v-if="addrs && addrs.length !== 0">
 				<h1 class="headline">Address Management</h1>
-                <div v-for="item in addrs.data"
+				<table class="table table-dark">
+                <tbody v-for="item in addrs.data"
                      :key="item.address_no"
                      class="items addr-items"
                 >	
-					<ul class="list addr-list">
-						<li>
-							{{  item.addressID  }}  -  {{  item.addressNo  }} - {{  item.streetName1  }}  - {{  item.streetName2  }}  - {{  item.city  }}  - {{  item.region  }}  - {{  item.countryCode  }}  - {{  item.postalCode  }}  - {{  item.userId_fk  }}
+							<td>{{  item.addressID  }}</td>   <td>{{  item.addressNo  }}</td>  <td>{{  item.streetName1  }}</td>   <td>{{  item.streetName2  }}</td>   <td>{{  item.city  }}</td>   <td>{{  item.region  }}</td>   <td>{{  item.countryCode  }}</td>   <td>{{  item.postalCode  }}</td>   <td>{{  item.userId_fk  }}</td>
 
-							<button @click='addr_del(item.addressID)'> Delete this addr </button>
-						</li>
-					</ul>
-                </div>
+							<button class="btn btn-secondary" @click='addr_del(item.addressID)'> Delete this addr </button>
+                </tbody>
+				<div display:inline>
+				<button class="btn btn-secondary" @click='addr_get(addr_idx-10)'> prev_page </button>
+				<button class="btn btn-secondary" @click='addr_get(addr_idx+10)'> next_page </button>
+				</div>
+				</table>
 				<ul>
 					<form class="form modify-form addr-form" v-on:submit.prevent="addr_modify">
 						<li>"modify information if you want"</li>
-						<input type="text" name="address_id" id="change_address_id" required v-model="addr_form2.address_id">
-						<input type="text" name="address_no" id="change_address_no" v-model="addr_form2.address_no">
-						<input type="text" name="street_name_1" id="change_street_name_1" v-model="addr_form2.street_name_1">
-						<input type="text" name="street_name_2" id="change_street_name_2" v-model="addr_form2.street_name_2">
-						<input type="text" name="city" id="change_city" v-model="addr_form2.city">
-						<input type="text" name="region" id="change_region" v-model="addr_form2.region">
-						<input type="text" name="country_code" id="change_country_code" v-model="addr_form2.country_code">
-						<input type="text" name="postal_code" id="change_postal_code" v-model="addr_form2.postal_code">
-						<input type="text" name="user_id_fk" id="change_user_id_fk" v-model="addr_form2.user_id_fk">
-						<p><input type="submit" value="Submit"></p>
+						<input   class="form-control"   type="text" name="address_id" id="change_address_id" required v-model="addr_form2.address_id">
+						<input   class="form-control"   type="text" name="address_no" id="change_address_no" v-model="addr_form2.address_no">
+						<input   class="form-control"   type="text" name="street_name_1" id="change_street_name_1" v-model="addr_form2.street_name_1">
+						<input   class="form-control"   type="text" name="street_name_2" id="change_street_name_2" v-model="addr_form2.street_name_2">
+						<input   class="form-control"   type="text" name="city" id="change_city" v-model="addr_form2.city">
+						<input   class="form-control"   type="text" name="region" id="change_region" v-model="addr_form2.region">
+						<input   class="form-control"   type="text" name="country_code" id="change_country_code" v-model="addr_form2.country_code">
+						<input   class="form-control"   type="text" name="postal_code" id="change_postal_code" v-model="addr_form2.postal_code">
+						<input   class="form-control"   type="text" name="user_id_fk" id="change_user_id_fk" v-model="addr_form2.user_id_fk">
+						<p><input class= "btn btn-primary" type="submit" value="Submit"></p>
 					</form>
 					<form class="form add-form addr-form" v-on:submit.prevent="addr_add">
 						<li>"add new address if you want"</li>
-						<input type="text" name="address_no" id="add_address_no" v-model="addr_form.address_no">
-						<input type="text" name="street_name_1" id="add_street_name_1" v-model="addr_form.street_name_1">
-						<input type="text" name="street_name_2" id="add_street_name_2" v-model="addr_form.street_name_2">
-						<input type="text" name="city" id="add_city" v-model="addr_form.city">
-						<input type="text" name="region" id="add_region" v-model="addr_form.region">
-						<input type="text" name="country_code" id="add_country_code" v-model="addr_form.country_code">
-						<input type="text" name="postal_code" id="add_postal_code" v-model="addr_form.postal_code">
-						<input type="text" name="user_id_fk" id="add_user_id_fk" v-model="addr_form.user_id_fk">
-						<p><input type="submit" value="Submit"></p>
+						<input   class="form-control"   type="text" name="address_no" id="add_address_no" v-model="addr_form.address_no">
+						<input   class="form-control"   type="text" name="street_name_1" id="add_street_name_1" v-model="addr_form.street_name_1">
+						<input   class="form-control"   type="text" name="street_name_2" id="add_street_name_2" v-model="addr_form.street_name_2">
+						<input   class="form-control"   type="text" name="city" id="add_city" v-model="addr_form.city">
+						<input   class="form-control"   type="text" name="region" id="add_region" v-model="addr_form.region">
+						<input   class="form-control"   type="text" name="country_code" id="add_country_code" v-model="addr_form.country_code">
+						<input   class="form-control"   type="text" name="postal_code" id="add_postal_code" v-model="addr_form.postal_code">
+						<input   class="form-control"   type="text" name="user_id_fk" id="add_user_id_fk" v-model="addr_form.user_id_fk">
+						<p><input  class= "btn btn-primary" type="submit" value="Submit"></p>
 					</form>
 				</ul>
             </div> 
@@ -90,6 +96,8 @@ import HomeApi from '@/api/home.js'
 export default {
     data() {
         return {
+			usr_idx: 0,
+			addr_idx: 0,
             users: [],
 			addrs: [],
 			user_form:{ // for adding purpose
@@ -154,6 +162,16 @@ export default {
 			let response= await HomeApi.deleteUser(id)
 			window.location.reload()
 		},
+		usr_get:async function(idx){
+			let res = await HomeApi.getUsers(idx)
+			this.usr_idx=idx
+			this.users = res.data
+		},
+		addr_get:async function(idx){
+			let res2 = await HomeApi.getAddrs(idx)
+			this.addr_idx=idx
+			this.addrs = res2.data
+		},
 		addr_add: async function(){
 			let response= await HomeApi.postNewAddr({
 				'address_no': this.addr_form.address_no,
@@ -201,6 +219,9 @@ export default {
 
 </script>
 <style type="text/css">
+.form-control {
+	background-color: #6c757d;
+}
 
 
 </style>

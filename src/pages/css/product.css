@@ -1,0 +1,55 @@
+.li_1 {
+    background: url("../image/product/pdb1.jpg") no-repeat 70% 20%;
+    background-size: 300% 100%;
+}
+
+.li_2 {
+    background: url("../image/product/pdb3.jpg") no-repeat 45% 45%;
+    background-size: 300% 100%;
+}
+
+.li_3 {
+    background: url("../image/product/pdb2.jpg") no-repeat  50% 50%;
+    background-size: 280% 100%;
+}
+
+.li_4 {
+    background: url("../image/product/pdb4.jpg") no-repeat;
+    background-size: 200% 100%;
+}
+
+.product-panel-1 {
+    left: 0%;
+}
+
+.product-panel-2 {
+    left: 25%;
+}
+
+.product-panel-3 {
+    left: 50%;
+}
+
+.product-panel-4 {
+    left: 75%;
+}
+
+.btn-1,
+.btn-2,
+.btn-4 {
+    color: whitesmoke;
+}
+
+.btn-1 rect,
+.btn-2 rect,
+.btn-4 rect {
+    stroke: navajowhite;
+}
+
+.btn-3 {
+    color: black;
+}
+
+.btn-3 rect {
+    stroke: #EE7700;
+}

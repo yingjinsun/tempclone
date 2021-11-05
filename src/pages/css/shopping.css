@@ -1,0 +1,157 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.products-container {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.products-previews {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.product-panel-1,
+.product-panel-2,
+.product-panel-3,
+.product-panel-4 {
+    overflow: hidden;
+    position: fixed;
+    height: 100%;
+    width: 25%;
+    color: red;
+}
+
+.title {
+    margin-top: 95%;
+}
+
+.title h2 {
+    font-family: "Times New Roman";
+    font-size: 30px;
+    color: whitesmoke;
+}
+
+.title p {
+    margin-top: 5%;
+    color: whitesmoke;
+    font-family: "Bradley Hand ITC", serif;
+}
+
+.products-previews li {
+    /*opacity: 0;*/
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    z-index: 5;
+}
+
+.product {
+    position: relative;
+    border: red 3px solid;
+    margin: 10% 10%;
+    height: 90%;
+    width: 80%;
+}
+
+.product img {
+    position: relative;
+    border: rgba(0, 0, 0, 0.5) 2px solid;
+}
+
+.product p {
+    margin: 5% auto;
+    font-size: 20px;
+    font-family: sans-serif;
+    color: whitesmoke;
+    text-align: center;
+}
+
+.product button {
+    font: 25px "Bradley Hand ITC";
+    color: whitesmoke;
+    text-shadow: #EE7700;
+    background-color: rgba(0, 0, 0, 0.8);
+    border: #EE7700 1.5px double;
+    height: 10%;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 50%;
+}
+
+.price {
+    background-color: grey;
+}
+
+.price span {
+    color: red ;
+    font-size: 25px;
+    font-family: "Microsoft YaHei";
+}
+
+/*button*/
+.btn {
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 45px;
+    text-align: center;
+    max-width: 160px;
+    left: 30%;
+    top: 80%;
+    position: absolute;
+    text-decoration: none;
+    text-transform: uppercase;
+    vertical-align: middle;
+    width: 100%;
+    z-index: 11;
+}
+.btn:hover {
+    text-decoration: none;
+    background:transparent;
+    text-align: center;
+    float:left;
+}
+
+.btn svg {
+    height: 45px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+.btn rect {
+    fill: none;
+    stroke: navajowhite;
+    stroke-width: 4;
+    stroke-dasharray: 422, 0;
+    transition: all 450ms linear 0s;
+}
+.btn:hover {
+    background: rgba(225, 51, 45, 0);
+    font-weight: 900;
+    letter-spacing: 1px;
+    transition: all 150ms linear 0s;
+}
+.btn:hover rect {
+    stroke-width: 4;
+    stroke-dasharray: 15, 310;
+    stroke-dashoffset: 48;
+    -webkit-transition: all 1.35s cubic-bezier(0.19, 1, 0.22, 1);
+    transition: all 1.35s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+
